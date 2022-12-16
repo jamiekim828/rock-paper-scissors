@@ -12,7 +12,7 @@ function App() {
 
   const [user, setUser] = useState('');
   const [computer, setComputer] = useState('');
-  const [winner, setWinner] = useState('');
+  const [winner, setWinner] = useState('start');
   const [score, setScore] = useState(10);
   const [result, setResult] = useState('');
 
@@ -62,6 +62,13 @@ function App() {
     setWinner('');
   };
 
+  console.log(winner);
+  const replay = () => {
+    setUser('');
+    setComputer('');
+    setWinner('start');
+  };
+
   return (
     <div className='App'>
       <BrowserRouter>
@@ -76,6 +83,7 @@ function App() {
                 user={user}
                 computer={computer}
                 winner={winner}
+                replay={replay}
               />
             }
           ></Route>
