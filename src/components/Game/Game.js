@@ -14,6 +14,7 @@ export default function Game({
   computer,
   winner,
   replay,
+  score,
 }) {
   const [showResult, setShowResult] = useState(false);
 
@@ -23,12 +24,10 @@ export default function Game({
     }
   }, [winner]);
 
-  console.log(showResult);
-
   return (
     <div>
       <div>
-        <Score />
+        <Score winner={winner} score={score} />
       </div>
       {winner === 'start' || showResult === false ? (
         <div className='game-div'>
@@ -43,14 +42,34 @@ export default function Game({
               <img src={scissors} alt='scissors' />
             </div>
           </div>
-          <div className='after-play-div'>
-            <div></div>
-          </div>
         </div>
       ) : (
         <div>
+          <div className='after-play-div'>
+            <div className='result-img'>
+              <div>
+                <p className='chosen'>You chose {user}</p>
+                <div className='user-chosen'>
+                  {user === 'rock' && <img src={rock} alt='rock' />}
+                  {user === 'paper' && <img src={paper} alt='paper' />}
+                  {user === 'scissors' && <img src={scissors} alt='scissors' />}
+                </div>
+              </div>
+              <div>
+                <p className='chosen'>Computer chose {computer}</p>
+                <div className='computer-chosen'>
+                  {computer === 'rock' && <img src={rock} alt='rock' />}
+                  {computer === 'paper' && <img src={paper} alt='paper' />}
+                  {computer === 'scissors' && (
+                    <img src={scissors} alt='scissors' />
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
           <div>
             <button
+              className='replay-btn'
               onClick={() => {
                 replay();
                 setShowResult(false);

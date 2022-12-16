@@ -71,3 +71,53 @@ button {
 button:hover {
   background-color: deeppink;
 }
+
+.result-img {
+  display: flex;
+}
+
+.result-img div {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.user-chosen {
+  background-color: rgb(159, 196, 247);
+  width: 220px;
+  height: 220px;
+  clip-path: circle(50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 22px solid rgb(10, 3, 145);
+  border-radius: 50%;
+}
+.user-chosen img,
+.computer-chosen img {
+  width: 100px;
+}
+
+.computer-chosen {
+  background-color: rgb(254, 146, 44);
+  width: 220px;
+  height: 220px;
+  clip-path: circle(50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 22px solid rgb(204, 15, 1);
+  border-radius: 50%;
+}
+
+.chosen {
+  font-size: 22px;
+}
+
+.after-play-div {
+  padding-top: 75px;
+}
+
+.replay-btn {
+  margin-top: 50px;
+  margin-bottom: 57px;
+}

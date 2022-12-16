@@ -14,34 +14,39 @@ function App() {
   const [computer, setComputer] = useState('');
   const [winner, setWinner] = useState('start');
   const [score, setScore] = useState(10);
-  const [result, setResult] = useState('');
 
   useEffect(() => {
     if (user === 'rock') {
       if (computer === 'scissors') {
-        return setWinner('user');
+        setWinner('player');
+        setScore((score) => score + 1);
       } else if (computer === 'paper') {
-        return setWinner('computer');
+        setWinner('computer');
+        setScore((score) => score - 1);
       } else if (computer === 'rock') {
-        return setWinner('tie');
+        setWinner('tie');
       }
     }
     if (user === 'paper') {
       if (computer === 'rock') {
-        return setWinner('user');
+        setWinner('player');
+        setScore((score) => score + 1);
       } else if (computer === 'paper') {
-        return setWinner('tie');
+        setWinner('tie');
       } else if (computer === 'scissors') {
-        return setWinner('computer');
+        setWinner('computer');
+        setScore((score) => score - 1);
       }
     }
     if (user === 'scissors') {
       if (computer === 'rock') {
-        return setWinner('computer');
+        setWinner('computer');
+        setScore((score) => score - 1);
       } else if (computer === 'paper') {
-        return setWinner('user');
+        setWinner('player');
+        setScore((score) => score + 1);
       } else if (computer === 'scissors') {
-        return setWinner('tie');
+        setWinner('tie');
       }
     }
   }, [user, computer]);
@@ -84,6 +89,7 @@ function App() {
                 computer={computer}
                 winner={winner}
                 replay={replay}
+                score={score}
               />
             }
           ></Route>
