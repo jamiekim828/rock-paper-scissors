@@ -10,6 +10,9 @@ export default function Game({
   handleRockClick,
   handlePaperClick,
   handleScissorsClick,
+  user,
+  computer,
+  winner,
 }) {
   return (
     <div>
@@ -17,16 +20,19 @@ export default function Game({
         <Score />
       </div>
       <div className='game-div'>
-        <div className='rock' onClick={handleRockClick}>
+        <div className='rock' onClick={() => handleRockClick()}>
           <img src={rock} alt='rock' />
         </div>
         <div className='game-div2'>
-          <div className='paper' onClick={handlePaperClick}>
+          <div className='paper' onClick={() => handlePaperClick()}>
             <img src={paper} alt='paper' />
           </div>
-          <div className='scissors' onClick={handleScissorsClick}>
+          <div className='scissors' onClick={() => handleScissorsClick()}>
             <img src={scissors} alt='scissors' />
           </div>
+        </div>
+        <div className='after-play-div'>
+          <div></div>
         </div>
         <div className='buttons'>
           <button>Rule</button>

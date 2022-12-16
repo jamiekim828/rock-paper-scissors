@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import './App.css';
@@ -12,23 +12,54 @@ function App() {
 
   const [user, setUser] = useState('');
   const [computer, setComputer] = useState('');
+  const [winner, setWinner] = useState('');
   const [score, setScore] = useState(10);
   const [result, setResult] = useState('');
+
+  useEffect(() => {
+    if (user === 'rock') {
+      if (computer === 'scissors') {
+        return setWinner('user');
+      } else if (computer === 'paper') {
+        return setWinner('computer');
+      } else if (computer === 'rock') {
+        return setWinner('tie');
+      }
+    }
+    if (user === 'paper') {
+      if (computer === 'rock') {
+        return setWinner('user');
+      } else if (computer === 'paper') {
+        return setWinner('tie');
+      } else if (computer === 'scissors') {
+        return setWinner('computer');
+      }
+    }
+    if (user === 'scissors') {
+      if (computer === 'rock') {
+        return setWinner('computer');
+      } else if (computer === 'paper') {
+        return setWinner('user');
+      } else if (computer === 'scissors') {
+        return setWinner('tie');
+      }
+    }
+  }, [user, computer]);
 
   const handleRockClick = () => {
     setUser('rock');
     setComputer(computerChoice);
-    console.log(user, computer);
+    setWinner('');
   };
   const handlePaperClick = () => {
     setUser('paper');
     setComputer(computerChoice);
-    console.log(user, computer);
+    setWinner('');
   };
   const handleScissorsClick = () => {
     setUser('scissors');
     setComputer(computerChoice);
-    console.log(user, computer);
+    setWinner('');
   };
 
   return (
@@ -42,6 +73,9 @@ function App() {
                 handleRockClick={handleRockClick}
                 handlePaperClick={handlePaperClick}
                 handleScissorsClick={handleScissorsClick}
+                user={user}
+                computer={computer}
+                winner={winner}
               />
             }
           ></Route>
