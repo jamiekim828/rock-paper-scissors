@@ -1,0 +1,73 @@
+.game-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 75px;
+}
+
+.game-div2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rock,
+.paper,
+.scissors {
+  background-color: honeydew;
+  width: 170px;
+  height: 170px;
+  clip-path: circle(50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 20px solid rgb(90, 221, 144);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.rock:hover,
+.paper:hover,
+.scissors:hover {
+  background-color: rgb(90, 221, 144);
+}
+
+.rock img,
+.paper img,
+.scissors img {
+  width: 75px;
+}
+
+.paper {
+  margin-right: 20px;
+  margin-bottom: 50px;
+}
+
+.rock {
+  margin-bottom: 5px;
+}
+
+.scissors {
+  margin-left: 20px;
+}
+
+.buttons {
+  margin-bottom: 50px;
+}
+
+button {
+  margin-right: 15px;
+  margin-left: 15px;
+  width: 100px;
+  height: 33px;
+  border: none;
+  cursor: pointer;
+  background-color: hotpink;
+  color: white;
+  border-radius: 15px;
+  font-size: 19px;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+}
+button:hover {
+  background-color: deeppink;
+}
