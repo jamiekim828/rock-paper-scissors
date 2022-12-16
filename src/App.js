@@ -13,7 +13,7 @@ function App() {
   const [user, setUser] = useState('');
   const [computer, setComputer] = useState('');
   const [winner, setWinner] = useState('start');
-  const [score, setScore] = useState(10);
+  const [score, setScore] = useState(3);
 
   useEffect(() => {
     if (user === 'rock') {
@@ -72,6 +72,7 @@ function App() {
     setUser('');
     setComputer('');
     setWinner('start');
+    setScore(3);
   };
 
   return (

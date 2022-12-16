@@ -5,6 +5,7 @@ import Score from '../Score';
 import rock from '../../images/icon-rock.svg';
 import paper from '../../images/icon-paper.svg';
 import scissors from '../../images/icon-scissors.svg';
+import rule from '../../images/image-rules.svg';
 
 export default function Game({
   handleRockClick,
@@ -17,6 +18,7 @@ export default function Game({
   score,
 }) {
   const [showResult, setShowResult] = useState(false);
+  const [ruleOpen, setRuleOpen] = useState(false);
 
   useEffect(() => {
     if (winner !== 'start') {
@@ -24,16 +26,27 @@ export default function Game({
     }
   }, [winner]);
 
+  const handleShowRule = () => {
+    setRuleOpen(!ruleOpen);
+  };
+
   return (
     <div>
       <div>
-        <Score winner={winner} score={score} />
+        <Score winner={winner} score={score} replay={replay} />
       </div>
+      {ruleOpen && (
+        <dialog
+          className='rule-pop-div'
+          style={{ position: 'absolute', zIndex: '10', marginTop: '130px' }}
+          open
+          onClick={handleShowRule}
+        >
+          <img className='rule-pop' src={rule} alt='rule' />
+        </dialog>
+      )}
       {winner === 'start' || showResult === false ? (
         <div className='game-div'>
-          <div className='rock' onClick={() => handleRockClick()}>
-            <img src={rock} alt='rock' />
-          </div>
           <div className='game-div2'>
             <div className='paper' onClick={() => handlePaperClick()}>
               <img src={paper} alt='paper' />
@@ -42,13 +55,16 @@ export default function Game({
               <img src={scissors} alt='scissors' />
             </div>
           </div>
+          <div className='rock' onClick={() => handleRockClick()}>
+            <img src={rock} alt='rock' />
+          </div>
         </div>
       ) : (
         <div>
           <div className='after-play-div'>
             <div className='result-img'>
               <div>
-                <p className='chosen'>You chose {user}</p>
+                <p className='chosen'>YOUR PICK {user.toUpperCase()}</p>
                 <div className='user-chosen'>
                   {user === 'rock' && <img src={rock} alt='rock' />}
                   {user === 'paper' && <img src={paper} alt='paper' />}
@@ -56,7 +72,7 @@ export default function Game({
                 </div>
               </div>
               <div>
-                <p className='chosen'>Computer chose {computer}</p>
+                <p className='chosen'>COMPUTER PICK {computer.toUpperCase()}</p>
                 <div className='computer-chosen'>
                   {computer === 'rock' && <img src={rock} alt='rock' />}
                   {computer === 'paper' && <img src={paper} alt='paper' />}
@@ -82,7 +98,7 @@ export default function Game({
       )}
 
       <div className='buttons'>
-        <button>Rule</button>
+        <button onClick={handleShowRule}>Rule</button>
         <button>Big Game</button>
       </div>
     </div>

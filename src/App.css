@@ -27,3 +27,19 @@
   font-weight: 600;
   display: flex;
 }
+
+.finish {
+  text-align: center;
+  font-size: 70px;
+  font-weight: 700;
+  position: absolute;
+  margin-top: 150px;
+  margin-left: 12%;
+  z-index: 20;
+  color: white;
+  text-shadow: rgb(244, 45, 145) 3px 0 20px;
+}
+
+.lost {
+  margin-top: 0;
+}
